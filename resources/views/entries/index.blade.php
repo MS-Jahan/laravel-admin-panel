@@ -34,6 +34,7 @@
                 ]
             });
 
+            // AJAX code for Delete button
             $('#entries-table').on('click', '.delete-entry', function (e) {
                 e.preventDefault();
                 var url = $(this).attr('href');
@@ -46,8 +47,15 @@
                             _token: "{{ csrf_token() }}" 
                         },
                         success: function (response) {
-                            $('#entries-table').DataTable().ajax.reload();
-                            alert('Entry deleted successfully.');
+                            if (response.success) {
+                                $('#entries-table').DataTable().ajax.reload();
+                                alert('Entry deleted successfully.');
+                            } else {
+                                alert('Error deleting entry.'); 
+                            }
+                        },
+                        error: function () {
+                            alert('An error occurred during the delete request.');
                         }
                     });
                 }

@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EntryController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::prefix('admin/entries')->group(function () {
+Route::prefix('')->group(function () {
     Route::get('/', [EntryController::class, 'index'])->name('entries.index'); 
     Route::get('/create', [EntryController::class, 'create'])->name('entries.create');
     Route::post('/', [EntryController::class, 'store'])->name('entries.store');

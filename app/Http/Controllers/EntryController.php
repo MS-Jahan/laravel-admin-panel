@@ -61,11 +61,10 @@ class EntryController extends Controller
             ->with('success', 'Entry updated successfully.');
     }
 
-    public function destroy(Entry $entry)
+        public function destroy(Entry $entry)
     {
         $entry->delete();
 
-        return redirect()->route('entries.index')
-            ->with('success', 'Entry deleted successfully.');
+        return response()->json(['success' => true]); 
     }
 }
